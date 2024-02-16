@@ -30,11 +30,13 @@ AND_32:
 ;logical ORR{S}
 OR_32:
     ORR R0, R0, R1
-    
+
     bx lr
-;returns if the number is even or odd.
+;returns 1 if the number is even 0 if odd.
 is_Even:
-    TST R0, 1
+    ;MOVS R0, R0 LSR #1 //this way we send the lsb to the carry
+    ;if C is set return 1 otherwise return 0
+    TST R0, #1
     MOVEQ R0, #0
     MOVNE R0, #1
 
